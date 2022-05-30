@@ -155,6 +155,7 @@ def main(folder_input, name_im, folder_output, alpha_1, alpha_2, beta_1, beta_2,
             ax.set_xticks([]), ax.set_yticks([])
             ax.axis([0, img.shape[1], img.shape[0], 0])
             fig.savefig(folder_output + '/deteccion'+str(img_number)+'.jpg',bbox_inches="tight")
+            plt.close(fig)
             #plt.show()
 
         imglist.append(file)
@@ -164,15 +165,15 @@ def main(folder_input, name_im, folder_output, alpha_1, alpha_2, beta_1, beta_2,
 
     # Exportar datos a excel
         data = pd.DataFrame({'Nombre': imglist,'Area um^2':arealist,'radio eq um':radEquivlist})
-        file_name = folder_output + '/' + 'may_30.xlsx'
+        file_name = folder_output + '/' + 'Output.xlsx'
         data.to_excel(file_name)
 
 #%%
 if __name__ == '__main__':
     #Ingresar la ruta de las imagenes en name_folder_images
     #Ingresar la ruta donde se guardaran las imágenes segmentadas y el archivo de datos en  name_folder_output
-    name_folder_images = '/Users/stevenmartine/Drive smarvar/Proyectos_extra/Segmentación Celular/Detector_Parma/2_ensayo'
-    name_folder_output = '/Users/stevenmartine/Drive smarvar/Proyectos_extra/Segmentación Celular/Detector_Parma/Output_may30'
+    name_folder_images = 'Input'
+    name_folder_output = 'Output'
     name_image_1 = 'ENSAYO1_1.jpg'
     #Parametros para 2_ensayo
     main(name_folder_images, name_image_1, name_folder_output, 
